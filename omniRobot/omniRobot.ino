@@ -2,6 +2,9 @@
 
 // Declaramos las variables para controlar cada servo
 Servo servoMotor1, servoMotor2, servoMotor3, servoMotor4;
+// Disposicion de los motores
+//servoMotor1 y servoMotor4  (frontales, izquierdo y derecho)
+//servoMotor2 y servoMotor3  (traseros, izquierdo y derecho)
 
 void left(){
   servoMotor1.write(1000);
