@@ -7,6 +7,8 @@
      password . mySTFRAME
      
     After connection, open your internet browser and go to 10.10.10.1
+
+    27 ws2811 leds connected at pin D2
   
 */
 
