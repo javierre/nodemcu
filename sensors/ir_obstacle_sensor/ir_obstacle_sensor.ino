@@ -1,8 +1,8 @@
 // IR Obstacle Collision Detection Module
 // Henry's Bench
 
-int LED = 13; // Use the onboard Uno LED
-int isObstaclePin = 7;  // This is our input pin
+int LED = LED_BUILTIN; // Use the onboard Uno LED
+int isObstaclePin = D6;  // This is our input pin
 int isObstacle = HIGH;  // HIGH MEANS NO OBSTACLE
 
 void setup() {
