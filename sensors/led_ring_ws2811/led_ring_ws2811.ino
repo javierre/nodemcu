@@ -1,7 +1,7 @@
 ﻿#include <Adafruit_NeoPixel.h>
 #define PIN D5
 #define count_led 24 // количество светодиодов 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(count_led, PIN, NEO_GRB + NEO_KHZ800); //first number change does distance between colors
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(count_led, PIN, NEO_RGB + NEO_KHZ800); //first number change does distance between colors
 void setup() { 
   strip.begin();
   strip.setBrightness(10);
