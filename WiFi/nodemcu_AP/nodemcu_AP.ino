@@ -11,7 +11,7 @@
  
 const char ssid[] = "NodeMCU-ESP8266";    //Definimos la SSDI de nuestro servidor WiFi -nombre de red- 
 const char password[] = "12345678";       //Definimos la contraseña de nuestro servidor 
-WiFiServer server(80);                    //Definimos el puerto de comunicacionesh
+WiFiServer server(80);                    //Definimos el puerto de comunicaciones
  
 int PinLED = 2;                           //Definimos el pin de salida - GPIO2 / D4
 int estado = LOW;                         //Definimos la variable que va a recoger el estado del LED
