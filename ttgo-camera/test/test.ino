@@ -16,17 +16,31 @@
  *  Modules
  **************************************/
 #define ENABLE_SSD1306
-#define SOFTAP_MODE       //The comment will be connected to the specified ssid
-// #define ENABLE_BME280
+#define ENABLE_BME280
 #define ENABLE_SLEEP
 #define ENABLE_IP5306
 
 
 /***************************************
- *  WiFi
+ *  WiFi  - when using the TTGO as server
  **************************************/
-#define WIFI_SSID   "your wifi ssid"
-#define WIFI_PASSWD "you wifi password"
+#define SOFTAP_MODE       //The comment will be connected to the specified ssid
+#define defaultSSID false //if true, then the SSID will be TTGO-CAMERA...
+                          //if false, it will take this SSID and PASS
+#define WIFI_SSID_self   "MYTTGOCAMERA"
+#define WIFI_PASSWD_self "mypassword"
+const IPAddress& from = IPAddress(2, 2, 2, 2);
+//const IPAddress& from = IPAddress(2, 2, 2, 1);
+
+
+/***************************************
+ *  WiFi  - for connections to external WIFI
+ **************************************/
+#define WIFI_SSID   "Andared"
+#define WIFI_PASSWD "llevalatararaunvestidoblancollenodecascabeles"
+
+
+
 
 
 
@@ -318,14 +332,28 @@ void setup()
 #ifdef SOFTAP_MODE
     uint8_t mac[6];
     WiFi.mode(WIFI_AP);
-    IPAddress apIP = IPAddress(2, 2, 2, 1);
+    
+    delay(100);
+ 
+    IPAddress apIP = IPAddress(from);
+    //IPAddress apIP = IPAddress(2, 2, 2, 1);
+    
     WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
     esp_wifi_get_mac(WIFI_IF_AP, mac);
     sprintf(buff, "TTGO-CAMERA-%02X:%02X", mac[4], mac[5]);
     Serial.printf("Device AP Name:%s\n", buff);
+
+    if(!defaultSSID){
+      if (!WiFi.softAP(WIFI_SSID_self, WIFI_PASSWD_self)){
+        Serial.println("AP Begin Failed.");
+        while (1);
+      }
+    }
+    else{
     if (!WiFi.softAP(buff, NULL, 1, 0)) {
         Serial.println("AP Begin Failed.");
         while (1);
+    }
     }
 #else
     WiFi.begin(WIFI_SSID, WIFI_PASSWD);
@@ -352,14 +380,19 @@ void setup()
 
 #ifdef SOFTAP_MODE
     ip = WiFi.softAPIP().toString();
-    Serial.printf("\nAp Started .. Please Connect %s hotspot\n", buff);
+    sprintf(buff, "TTGO-CAMERA-%02X:%02X", mac[4], mac[5]);
+    //Serial.printf("\nAp Started .. Please Connect %s hotspot\n", buff);
+    Serial.printf("\nAp Started .. Please Connect to ");
+    if(defaultSSID) Serial.printf(buff);
+    else Serial.print(WIFI_SSID_self);
+    Serial.printf(" network\n" );
 #else
     ip = WiFi.localIP().toString();
 #endif
 
     Serial.print("Camera Ready! Use 'http://");
     Serial.print(ip);
-    Serial.println("' to connect**");
+    Serial.println("' to connect");
 }
 
 void loop()
