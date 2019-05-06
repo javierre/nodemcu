@@ -11,7 +11,7 @@
  
 const char ssid[] = "NodeMCU-ESP8266";    //Definimos la SSDI de nuestro servidor WiFi -nombre de red- 
 const char password[] = "12345678";       //Definimos la contraseña de nuestro servidor 
-WiFiServer server(80);                    //Definimos el puerto de comunicaciones
+WiFiServer server(80);                    //Definimos el puerto de comunicacionesh
  
 int PinLED = 2;                           //Definimos el pin de salida - GPIO2 / D4
 int estado = LOW;                         //Definimos la variable que va a recoger el estado del LED
@@ -35,7 +35,7 @@ void setup() {
   Serial.print("Direccion MAC Access Point: ");                   //Imprime la dirección MAC
   Serial.println(WiFi.softAPmacAddress()); 
  
-  //IPAddress local_ip(192, 168, 1, 1);                           //Modifica la dirección IP, por defecto es http:ENCENDER//192.168.4.1
+  //IPAddress local_ip(192, 168, 1, 1);                           //Modifica la dirección IP, por defecto es http://192.168.4.1
   //IPAddress gateway(192, 168, 1, 1);   
   //IPAddress subnet(255, 255, 255, 0);
   //WiFi.softAPConfig(local_ip, gateway, subnet);
