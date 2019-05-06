@@ -10,8 +10,10 @@
  */
 #include <ESP8266WiFi.h>                  //Incluye la librería ESP8266WiFi
 
-const char* ssid = "Andared";    //Indicamos el nombre de la red WiFi (SSID) a la que queremos conectarnos.
-const char* password = "llevalatararaunvestidoblancollenodecascabeles";       //Indicamos la contraseña de de red WiFi
+const char* ssid = "MyWiFiSSID";    //Indicamos el nombre de la red WiFi (SSID) a la que queremos conectarnos.
+const char* password = "MYpassword";       //Indicamos la contraseña de de red WiFi
+
+
 WiFiServer server(80);                    //Definimos el puerto de comunicaciones
 
 int PinLED = 2; // GPIO2                  //Definimos el pin de salida - GPIO2 / D4
@@ -72,10 +74,10 @@ void loop()
 
   // Comprueba la petición
   if (peticion.indexOf('/LED=ON') != -1) {
-    estado = HIGH;
+    estado = LOW;
   } 
   if (peticion.indexOf('/LED=OFF') != -1){
-    estado = LOW;
+    estado = HIGH;
   }
 
   //Enciende o apaga el LED en función de la petición
@@ -88,16 +90,16 @@ void loop()
   client.println("");
   client.println("");
 
-  client.print("<h1 align=center>El LED está ahora: ");
+  client.print("<h1 align=center>El LED est&aacute; ahora: ");
 
- if(estado == HIGH) {
+ if(estado == LOW) {
  client.print("ENCENDIDO</h1>"); 
- client.print("<img src='http://esploradores.com/Practicas_html/LED_encendido.png' alt='Bombilla encendida' style='display:block; margin:auto' width='15%'>");
- client.print("<input type='image' src='http://esploradores.com/Practicas_html/apagar_300x88.png' style='display:block; margin:auto' width='25%' onClick=location.href='/LED=OFF'>"); 
+ client.print("<img src='http://esploradores.com/Practicas_html/LED_encendido.png' alt='Bombilla encendida' style='display:block; margin:auto' width='10%'>");
+ client.print("<input type='image' src='http://esploradores.com/Practicas_html/apagar_300x88.png' style='display:block; margin:auto' width='20%' onClick=location.href='/LED=OFF'>"); 
  } else {
  client.print("APAGADO</h1>");
- client.print("<img src='http://esploradores.com/Practicas_html/LED_apagado.png' alt='Bombilla apagada' style='display:block; margin:auto' width='15%'>");
- client.print("<input type='image' src='http://esploradores.com/Practicas_html/encender_300x88.png' style='display:block; margin:auto' width='25%' onClick=location.href='/LED=ON'>");
+ client.print("<img src='http://esploradores.com/Practicas_html/LED_apagado.png' alt='Bombilla apagada' style='display:block; margin:auto' width='10%'>");
+ client.print("<input type='image' src='http://esploradores.com/Practicas_html/encender_300x88.png' style='display:block; margin:auto' width='20%' onClick=location.href='/LED=ON'>");
  }
 
  client.println("</html>");
