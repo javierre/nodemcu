@@ -28,6 +28,13 @@
 //import the library in the sketch
 #include <SharpIR.h>
 
+//MODELS
+
+//GP2YA41SK0F
+//GP2Y0A21YK0F
+//GP2Y0A02YK0F
+
+
 //Create a new instance of the library
 //Call the sensor "sensor"
 //The model of the sensor is "GP2YA41SK0F"
