@@ -20,7 +20,7 @@ void drawHelloWorld()
 {
     display.setTextAlignment(TEXT_ALIGN_LEFT);
     display.setFont(ArialMT_Plain_10);
-    display.drawString(0, 0, "Hello world");
+    display.drawString(0, 0, "Hello world---");
     display.setFont(ArialMT_Plain_16);
     display.drawString(0, 10, "Hello world");
     display.setFont(ArialMT_Plain_24);
