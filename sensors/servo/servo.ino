@@ -14,7 +14,7 @@ void setup() {
   Serial.begin(9600);
  
   // Iniciamos el servo para que empiece a trabajar con el pin D7
-  servoMotor.attach(D7);
+  servoMotor.attach(D0);
 }
  
 void loop() {
@@ -29,8 +29,8 @@ void loop() {
   // Esperamos 1 segundo
   delay(1000);
   
-  // Desplazamos a la posición 180º
-  servoMotor.write(180);
+  // Desplazamos a la posición 45
+  servoMotor.write(45);
   // Esperamos 1 segundo
   delay(1000);
 }
