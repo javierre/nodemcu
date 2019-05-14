@@ -13,7 +13,7 @@ void setup() {
   // Iniciamos el monitor serie para mostrar el resultado
   Serial.begin(9600);
 
-  // Iniciamos el servo para que empiece a trabajar con el pin 9
+  // Iniciamos el servo para que empiece a trabajar con el pin D0
   servoMotor.attach(D0);
 
   // Inicializamos al ángulo 0 el servomotor
