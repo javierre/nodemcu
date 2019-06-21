@@ -1,4 +1,6 @@
 # nodemcu
 
 
-Info, Wiki and codes
+Check the Wiki for more information:
+
+[Wiki](../../wiki)
